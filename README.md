@@ -7,12 +7,7 @@
 1. 打开 Chrome 或 Edge 的扩展管理页。
 2. 开启“开发者模式”。
 3. 选择“加载已解压的扩展”。
-4. 选择这个目录：
-
-   ```text
-   C:\Users\EIKO\Desktop\Study\SubStudy\Codex\WebPageMonitor
-   ```
-
+4. 选择该项目所在的目录。
 5. 点击扩展图标进入设置页。
 
 ## 两种时间策略
