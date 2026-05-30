@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>需要记录原因</title>
+    <link rel="stylesheet" href="blocked.css">
+  </head>
+  <body>
+    <main class="gate">
+      <section class="panel">
+        <p class="eyebrow" id="policyLabel">非计划访问</p>
+        <h1 id="siteName">这个网站现在需要记录原因</h1>
+        <p class="target" id="targetUrl"></p>
+        <p class="next" id="nextWindow"></p>
+
+        <form id="accessForm">
+          <label for="reason">打开原因</label>
+          <textarea id="reason" rows="5" maxlength="300" placeholder="例如：查一个教程、处理一次约好的直播、放松 10 分钟后回到任务。"></textarea>
+
+          <div class="formRow">
+            <label for="duration">本次放行</label>
+            <select id="duration">
+              <option value="5">5 分钟</option>
+              <option value="10" selected>10 分钟</option>
+              <option value="15">15 分钟</option>
+              <option value="30">30 分钟</option>
+            </select>
+          </div>
+
+          <p class="error" id="errorMessage" role="alert"></p>
+
+          <div class="actions">
+            <button class="secondary" type="button" id="stayButton">暂不打开</button>
+            <button class="primary" type="submit">记录并打开</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="blocked.js"></script>
+  </body>
+</html>

@@ -1,0 +1,623 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f6f3;
+  --panel: #ffffff;
+  --text: #1f2523;
+  --muted: #66716c;
+  --line: #d8ded7;
+  --soft-line: #e7ebe4;
+  --accent: #1f7a5f;
+  --accent-dark: #145a47;
+  --accent-soft: rgba(31, 122, 95, 0.12);
+  --block: #b4513b;
+  --block-dark: #803323;
+  --block-soft: rgba(180, 81, 59, 0.12);
+  --warm: #c56f38;
+  --table: #fafbf8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 28px clamp(18px, 4vw, 44px) 18px;
+  border-bottom: 1px solid var(--line);
+  background: #fffdfa;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--warm);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1,
+h2 {
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.topActions,
+.sectionHead {
+  display: flex;
+  gap: 10px;
+}
+
+.topActions,
+.sectionHead {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
+  gap: 18px;
+  padding: 20px clamp(18px, 4vw, 44px) 38px;
+}
+
+.panel {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  padding: 20px;
+  box-shadow: 0 14px 32px rgba(31, 37, 35, 0.08);
+}
+
+.controlsPanel {
+  align-self: start;
+}
+
+.policyPanel {
+  display: grid;
+  gap: 16px;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.subtle {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+label,
+legend {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+textarea,
+input[type="time"],
+input[type="number"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfa;
+  color: var(--text);
+}
+
+textarea {
+  display: block;
+  min-height: 220px;
+  margin-top: 12px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+input[type="time"],
+input[type="number"] {
+  min-height: 40px;
+  padding: 0 10px;
+}
+
+textarea:focus,
+input:focus {
+  border-color: var(--accent);
+  outline: 3px solid rgba(31, 122, 95, 0.16);
+}
+
+button {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 13px;
+  background: #ffffff;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+button:hover {
+  background: #f2f4f0;
+}
+
+.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.primary:hover {
+  background: var(--accent-dark);
+}
+
+.danger {
+  border-color: rgba(180, 81, 59, 0.35);
+  color: var(--block);
+}
+
+.danger:hover {
+  background: var(--block-soft);
+}
+
+.settingsStack {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.checkbox,
+.durationField {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.durationField input {
+  width: 76px;
+}
+
+.status {
+  min-height: 20px;
+  margin-top: 12px;
+  color: var(--accent-dark);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.modeBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  border-radius: 999px;
+  padding: 0 11px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.modeBadge.block {
+  background: var(--block-soft);
+  color: var(--block-dark);
+}
+
+.modeBadge.both {
+  background: rgba(197, 111, 56, 0.16);
+  color: #7d441e;
+}
+
+.modeBadge.disabled {
+  background: #eef2ec;
+  color: var(--muted);
+}
+
+.policySwitchGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.policySwitch {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  min-height: 108px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px 16px 14px 58px;
+  background: #fbfcfa;
+  cursor: pointer;
+}
+
+.policySwitch input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switchVisual {
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  width: 30px;
+  height: 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #e8ece6;
+}
+
+.switchVisual::after {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(31, 37, 35, 0.18);
+  content: "";
+  transition: transform 140ms ease;
+}
+
+.policySwitch:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.policySwitch:has(input:checked) .switchVisual {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.policySwitch:has(input:checked) .switchVisual::after {
+  transform: translateX(12px);
+}
+
+.blockSwitch:has(input:checked) {
+  border-color: var(--block);
+  background: var(--block-soft);
+  box-shadow: inset 0 0 0 1px var(--block);
+}
+
+.blockSwitch:has(input:checked) .switchVisual {
+  border-color: var(--block);
+  background: var(--block);
+}
+
+.modeTitle {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.modeText {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.scheduleColumns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.scheduleBoard {
+  min-width: 0;
+  border: 1px solid var(--soft-line);
+  border-radius: 8px;
+  background: #fbfcfa;
+  padding: 14px;
+}
+
+.scheduleBoard.isActive {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.blockBoard.isActive {
+  border-color: var(--block);
+  box-shadow: inset 0 0 0 1px var(--block);
+}
+
+.boardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.boardHead p {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.boardHead strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 18px;
+}
+
+.boardState {
+  display: none;
+  min-height: 26px;
+  border-radius: 999px;
+  padding: 0 10px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 900;
+  place-items: center;
+}
+
+.blockBoard .boardState {
+  background: var(--block-soft);
+  color: var(--block-dark);
+}
+
+.scheduleBoard.isActive .boardState {
+  display: grid;
+}
+
+.scheduleAdd {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+}
+
+fieldset {
+  min-width: 0;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.dayPickerWrap {
+  grid-column: 1 / -1;
+}
+
+.dayGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(32px, 1fr));
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.dayGrid label {
+  display: grid;
+  min-height: 34px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.dayGrid input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dayGrid label:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.blockBoard .dayGrid label:has(input:checked) {
+  border-color: var(--block);
+  background: var(--block-soft);
+  color: var(--block-dark);
+}
+
+.fieldGroup {
+  display: grid;
+  gap: 6px;
+}
+
+.scheduleList {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.scheduleItem {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--accent);
+  border-radius: 8px;
+  padding: 13px 12px;
+  background: #ffffff;
+}
+
+.scheduleItem.block {
+  border-left-color: var(--block);
+}
+
+.timeRange {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.timeRange span {
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.dayChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.dayChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  border-radius: 999px;
+  padding: 0 8px;
+  background: #eef2ec;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.empty {
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.tableWrap {
+  overflow: auto;
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: collapse;
+  background: var(--panel);
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--line);
+  padding: 11px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background: var(--table);
+  color: var(--muted);
+  font-size: 13px;
+  z-index: 1;
+}
+
+td {
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+td.url {
+  max-width: 360px;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+}
+
+td.reason {
+  max-width: 320px;
+  overflow-wrap: anywhere;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  border-radius: 999px;
+  padding: 0 9px;
+  background: var(--block-soft);
+  color: var(--block-dark);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.pill.allowed {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+@media (max-width: 1180px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .controlsPanel {
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 880px) {
+  .topbar,
+  .sectionHead {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .topActions {
+    flex-wrap: wrap;
+  }
+
+  .policySwitchGrid,
+  .scheduleColumns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .scheduleAdd {
+    grid-template-columns: 1fr;
+  }
+
+  .topActions button,
+  .sectionHead button,
+  .scheduleAdd button {
+    width: 100%;
+  }
+}

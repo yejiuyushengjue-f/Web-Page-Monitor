@@ -1,0 +1,11 @@
+{
+  "name": "web-page-monitor",
+  "version": "0.3.0",
+  "private": true,
+  "description": "A Chrome/Edge extension that gates selected sites by allow and block time windows.",
+  "scripts": {
+    "check": "node --check shared.js && node --check background.js && node --check options.js && node --check blocked.js && node -e \"JSON.parse(require('fs').readFileSync('manifest.json', 'utf8'))\"",
+    "test": "node tests/policy.test.js"
+  },
+  "license": "UNLICENSED"
+}

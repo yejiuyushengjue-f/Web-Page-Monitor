@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Page Monitor 设置</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Web Page Monitor</p>
+        <h1>娱乐访问边界</h1>
+      </div>
+      <div class="topActions">
+        <button id="exportCsvButton" type="button">导出 CSV</button>
+        <button id="exportJsonButton" type="button">导出 JSON</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel controlsPanel">
+        <div class="sectionHead">
+          <h2>网站和行为</h2>
+          <button class="primary" id="saveButton" type="button">保存设置</button>
+        </div>
+
+        <label for="sitesInput">受控网站，每行一个域名</label>
+        <textarea id="sitesInput" rows="8" spellcheck="false"></textarea>
+
+        <div class="settingsStack">
+          <label class="checkbox">
+            <input id="recordAllowedInput" type="checkbox">
+            <span>记录允许访问</span>
+          </label>
+
+          <label class="durationField" for="passMinutesInput">
+            <span>默认放行</span>
+            <input id="passMinutesInput" type="number" min="1" max="60" step="1">
+            <span>分钟</span>
+          </label>
+        </div>
+
+        <p class="status" id="saveStatus" role="status"></p>
+      </section>
+
+      <section class="panel policyPanel">
+        <div class="sectionHead">
+          <div>
+            <h2>时间策略</h2>
+            <p class="subtle" id="activeModeSummary"></p>
+          </div>
+          <span class="modeBadge" id="activeModeBadge"></span>
+        </div>
+
+        <div class="policySwitchGrid">
+          <label class="policySwitch allowSwitch">
+            <input id="allowPolicyEnabledInput" type="checkbox">
+            <span class="switchVisual" aria-hidden="true"></span>
+            <span class="modeTitle">启用允许时间段</span>
+            <span class="modeText">开启后，允许时间段之外访问受控网站时，需要填写原因。</span>
+          </label>
+
+          <label class="policySwitch blockSwitch">
+            <input id="blockPolicyEnabledInput" type="checkbox">
+            <span class="switchVisual" aria-hidden="true"></span>
+            <span class="modeTitle">启用禁止时间段</span>
+            <span class="modeText">开启后，禁止时间段内访问受控网站时，需要填写原因。</span>
+          </label>
+        </div>
+
+        <div class="scheduleColumns">
+          <section class="scheduleBoard allowBoard" id="allowBoard">
+            <div class="boardHead">
+              <div>
+                <p>允许时间段</p>
+                <strong id="allowCount"></strong>
+              </div>
+              <span class="boardState">已启用</span>
+            </div>
+
+            <div class="scheduleAdd">
+              <fieldset class="dayPickerWrap">
+                <legend>星期</legend>
+                <div class="dayGrid" id="allowDayGrid"></div>
+              </fieldset>
+
+              <label class="fieldGroup" for="allowStartInput">
+                <span>开始</span>
+                <input id="allowStartInput" type="time" value="20:00">
+              </label>
+
+              <label class="fieldGroup" for="allowEndInput">
+                <span>结束</span>
+                <input id="allowEndInput" type="time" value="21:00">
+              </label>
+
+              <button id="addAllowScheduleButton" type="button">添加允许</button>
+            </div>
+
+            <div class="scheduleList" id="allowScheduleList"></div>
+          </section>
+
+          <section class="scheduleBoard blockBoard" id="blockedBoard">
+            <div class="boardHead">
+              <div>
+                <p>禁止时间段</p>
+                <strong id="blockedCount"></strong>
+              </div>
+              <span class="boardState">已启用</span>
+            </div>
+
+            <div class="scheduleAdd">
+              <fieldset class="dayPickerWrap">
+                <legend>星期</legend>
+                <div class="dayGrid" id="blockedDayGrid"></div>
+              </fieldset>
+
+              <label class="fieldGroup" for="blockedStartInput">
+                <span>开始</span>
+                <input id="blockedStartInput" type="time" value="22:30">
+              </label>
+
+              <label class="fieldGroup" for="blockedEndInput">
+                <span>结束</span>
+                <input id="blockedEndInput" type="time" value="08:00">
+              </label>
+
+              <button id="addBlockedScheduleButton" type="button">添加禁止</button>
+            </div>
+
+            <div class="scheduleList" id="blockedScheduleList"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel wide">
+        <div class="sectionHead">
+          <h2>访问日志</h2>
+          <button class="danger" id="clearLogsButton" type="button">清空日志</button>
+        </div>
+
+        <div class="tableWrap">
+          <table>
+            <thead>
+              <tr>
+                <th>时间</th>
+                <th>网站</th>
+                <th>类型</th>
+                <th>原因</th>
+                <th>地址</th>
+              </tr>
+            </thead>
+            <tbody id="logsBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="shared.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
